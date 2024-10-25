@@ -7,6 +7,13 @@ html{
     margin: 0;
 }
 
+body{
+  
+    background: -o-linear-gradient(-135deg, #2E3192 , #1BFFFF);
+    background: -moz-linear-gradient(-135deg, #2E3192 , #1BFFFF);
+    background: linear-gradient(-135deg,#2E3192 , #1BFFFF);
+}
+
 
 
 /*~~~~~~~~~~~~~~~~~~~ page header ~~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -114,6 +121,16 @@ html{
 .page-home-content{
     display: none;
     max-width: 100vw;
+
+}
+
+#page-home-content-main{
+
+    background-color: white;
+    width: 100%;
+    margin: 0 50px;
+
+
 }
 
 .page-home-cards{
