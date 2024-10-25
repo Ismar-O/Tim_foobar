@@ -37,7 +37,8 @@ document.getElementById('submitLink').addEventListener('click', function(event) 
             const p = document.createElement('p');
             p.textContent = entry.text;
             document.getElementById('feedOutput').appendChild(p);
-            pageWrite("tekst", $(p));
+            pageWrite("tekst", p);
+            console.log("tekst", p)
         });
     })
     .catch(error => console.error('Greška:', error));
