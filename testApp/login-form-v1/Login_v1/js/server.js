@@ -7,6 +7,8 @@ document.getElementById('myForm').addEventListener('submit', function(event) {
     const email = document.getElementById('email').value;
     const pw = document.getElementById('pw').value;
 
+
+
     console.log(`Email: ${email}`);
     console.log(`Username: ${name}`);
     console.log(`Password: ${pw}`);

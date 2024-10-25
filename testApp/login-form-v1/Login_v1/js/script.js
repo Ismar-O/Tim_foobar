@@ -1,16 +1,30 @@
-document.getElementById('dataForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Sprečava podrazumevano ponašanje forme
+// Register Form skirpta
 
-    const ime = document.getElementById('ime').value; // Uzimanje vrednosti imena
-    const email = document.getElementById('email').value; // Uzimanje vrednosti emaila
 
+document.getElementById('myForm').addEventListener('submit', function(event) {
+    event.preventDefault(); 
+
+    const name = document.getElementById('Username').value;
+    const email = document.getElementById('email').value;
+    const pw = document.getElementById('pw').value;
+
+    //Ispis na konzolu  
+    /*
+    console.log(`Email: ${email}`);
+    console.log(`Username: ${name}`);
+    console.log(`Password: ${pw}`);
+    */
+
+  
     // Slanje podataka na server
     fetch('/submit', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json' // Definiše tip sadržaja
+            "Content-type": "application/json; charset=UTF-8" 
         },
-        body: JSON.stringify({ ime: ime, email: email }) // Konvertuje podatke u JSON
+        
+        body: JSON.stringify({ name: name, email: email, pw: pw }) // Konvertuje podatke u JSON
+        
     })
     .then(response => response.text()) // Očekuje odgovor u tekstualnom formatu
     .then(data => {
