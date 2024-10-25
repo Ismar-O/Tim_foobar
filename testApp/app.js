@@ -41,15 +41,25 @@ app.post('/submitREG', (req, res) => {
       // Log the received data to the console
     console.log('Received data:', {ime , email, pw });
       // Send a response back to the client
-     res.send(`Thank you for your submission, ${ime}!`);
+    // res.send(`Thank you for your submission, ${ime}!`);
    
     const myobj = { Username: ime, Password: pw, Email: email };
-    pageWrite("users", myobj);
 
-    res.redirect('../index.html');
-    
+
+    pageWrite("users", myobj).then(()=>{res.status(200)
+        res.redirect('/index')
+    }).catch(e=>{res.status(400) 
+        console.log(e)})
 
 });
+
+app.get('/register',(req,res)=>{
+    res.sendFile(path.join(__dirname,'login-form-v1/Login_v1/Register_v2/register.html'))
+})
+    
+app.get("/index",(req,res)=>{
+    res.sendFile(path.join(__dirname,'login-form-v1/Login_v1/index.html'))
+})
 
 
 
@@ -93,7 +103,7 @@ async function getEntry(pageColl, title, value){
       const pageUsers = database.collection(pageColl);
       const query = { Username: value };
       const pageUserName = await pageUsers.findOne(query);
-      //console.log(pageUserName._id);
+      //    console.log(pageUserName._id);
 
     } finally {     
       await client.close();

@@ -28,7 +28,10 @@ document.getElementById('myForm').addEventListener('submit', function(event) {
     })
     .then(response => response.text()) // Očekuje odgovor u tekstualnom formatu
     .then(data => {
-        alert(data); // Prikazuje odgovor korisniku
+        // const app = document.getElementById("root").innerHTML=data
+        console.log(data);
+        
+        // alert(data); // Prikazuje odgovor korisniku
     })
     .catch(error => console.error('Greška:', error)); // Obrada grešaka
 });
