@@ -17,7 +17,7 @@ document.getElementById('myForm').addEventListener('submit', function(event) {
 
   
     // Slanje podataka na server
-    fetch('/submit', {
+    fetch('/submitREG', {
         method: 'POST',
         headers: {
             "Content-type": "application/json; charset=UTF-8" 
