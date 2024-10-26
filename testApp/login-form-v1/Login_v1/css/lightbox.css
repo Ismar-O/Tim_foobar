@@ -1,10 +1,4 @@
 
-.customBG{
-  background: -webkit-linear-gradient(-135deg, #2E3192 , #1BFFFF);
-  background: -o-linear-gradient(-135deg, #2E3192 , #1BFFFF);
-  background: -moz-linear-gradient(-135deg, #2E3192 , #1BFFFF);
-  background: linear-gradient(-135deg,#2E3192 , #1BFFFF);
-}
 
 
 .customCard{
@@ -33,8 +27,14 @@
 
 
 #myFeed-body{
+  min-width: 105%;
   display: grid;
   grid-template-columns: 1fr;
+}
+
+
+#posts-container{
+  min-width: 100%;
 }
 
 

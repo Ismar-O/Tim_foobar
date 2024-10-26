@@ -1,56 +1,50 @@
     
+    
+    // Create and add post to base
+    
     document.getElementById('submitLink').addEventListener('click', function(event) {
-        event.preventDefault();  // Prevent default form submission
+        event.preventDefault(); 
 
-       
-
-        // Get the value of the input field
         const myText = document.getElementById('feedInput').value;
         const myHead = document.getElementById('headInput').value;
         document.getElementById('feedInput').value  = "";
         document.getElementById('headInput').value  = "";
 
-        console.log("Pisanje jsona");
-
-        // Send a POST request to the server
         fetch('http://localhost:8000/newpost', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ myText, myHead, myUser})   // Send the form data as JSON
+            body: JSON.stringify({ myText, myHead, myUser}) //Passing JSON file
         })
-        .then(response => response.json())     // Parse the JSON response
+        .then(response => response.json())   
         .then(data => {
             console.log('Success:', data);
-            // Optionally, update the page or show a success message here
-        })
+      })
         .catch((error) => {
             console.error('Error:', error);
         });
     });
 
-
+//Getting username details from cookie
 function getCookie(name) {
     const value = document.cookie;  
-    console.log("Cookie string:", value);
-    
+    console.log("Cookie string:", value);    
     const parts = value.split(`; ${name}=`); 
     console.log("Parts after split:", parts);
-
     if (parts.length) {
         const value = parts[0].split('=')[1];
   
         return decodeURIComponent(value);
     }
     
-    return null;  // Return null if cookie is not found
+    return null;  
 }
 
 const myUser = getCookie('user');
 
 
-
+// Writing posts to div
 
 
 fetch('http://localhost:8000/getPosts')

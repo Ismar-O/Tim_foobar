@@ -1,3 +1,5 @@
+//Read cookie function
+
 function getCookie(name) {
     const value = document.cookie;  
     console.log("Cookie string:", value);
@@ -11,7 +13,7 @@ function getCookie(name) {
         return decodeURIComponent(value);
     }
     
-    return null;  // Return null if cookie is not found
+    return null;  
 }
 
 // Get the 'username' cookie
