@@ -1,6 +1,6 @@
-const express = require('express');  //Za serviranje cijelih stranica
+const express = require('express');         //Za serviranje cijelih stranica
 const path = require('path'); 
-const bodyParser = require('body-parser'); //Za parsiranje 
+const bodyParser = require('body-parser');  //Za parsiranje 
 const app = express();
 const port = 8000;
 
@@ -22,7 +22,7 @@ const client = new MongoClient(uri);
 
 
 
-getEntry("users", "", "Ismar").catch(console.dir);
+//getEntry("users", "", "Ismar").catch(console.dir);
 
 
 
@@ -31,54 +31,82 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //Handling submision get req
 
 
+
+app.get('/register',(req,res)=>{
+    res.sendFile(path.join(__dirname,'login-form-v1/Login_v1/register.html'))
+})
+    
+app.get("/login",(req,res)=>{
+    res.sendFile(path.join(__dirname,'login-form-v1/Login_v1/index.html'))
+})
+app.get("/home",(req,res)=>{
+    res.sendFile(path.join(__dirname,'login-form-v1/Login_v1/default.html'))
+})
+
 app.use(express.json());
-
-
 app.post('/submitREG', (req, res) => {
-    const ime = req.body.name; // Access the 'name' field
-    const email = req.body.email; // Access the 'email' field
-    const pw = req.body.pw; // Access the 'pw' field
+    let ime = req.body.Username; // Access the 'name' field
+    let email = req.body.Email; // Access the 'email' field
+    let pw = req.body.Pass; // Access the 'pw' field
       // Log the received data to the console
     console.log('Received data:', {ime , email, pw });
       // Send a response back to the client
-    // res.send(`Thank you for your submission, ${ime}!`);
-   
+    //console.log(req);
+
     const myobj = { Username: ime, Password: pw, Email: email };
 
 
-    pageWrite("users", myobj).then(()=>{res.status(200)
-        res.redirect('/index')
-    }).catch(e=>{res.status(400) 
-        console.log(e)})
+    pageWrite("users", myobj);
+
+    
+    res.redirect('/login')
+    
 
 });
 
-app.get('/register',(req,res)=>{
-    res.sendFile(path.join(__dirname,'login-form-v1/Login_v1/Register_v2/register.html'))
-})
-    
-app.get("/index",(req,res)=>{
-    res.sendFile(path.join(__dirname,'login-form-v1/Login_v1/index.html'))
-})
 
 
 
 app.post('/submitLOG', (req, res) => {
-    const ime = req.body.name; // Access the 'name' field
-    const pw = req.body.pw; // Access the 'pw' field
+    const ime = req.body.Username; // Access the 'name' field
+    const pw = req.body.Pass; // Access the 'pw' field
       // Log the received data to the console
     console.log('Received data:', {ime, pw});
       // Send a response back to the client
-    res.send(`Thank you for your submission, ${ime}!`);
+    getEntry('users', ime).then(result => {
 
-    getEntry()
+
+      if(result == pw){
+
+        res.redirect('/home');
+      }else{
+        res.send("Neispravan pass");
+      }
+    
+      console.log("Ovo je podatak " + result);
+  }).catch(error => {
+      console.error(error);
+  });
+
+ 
 
 });
 
 
 
+app.post('/submitWP', (req, res) => {
+
+      res.redirect('/login');
+
+
+});
+
+
+
+
+
   async function pageWrite(pageColl, obj) {
-    const client = new MongoClient(uri);
+   
     try {
       // Connect to the MongoDB server
       await client.connect();
@@ -94,16 +122,21 @@ app.post('/submitLOG', (req, res) => {
          await client.close();
     }
   }
-
-
   
-async function getEntry(pageColl, title, value){
+async function getEntry(pageColl, value){
     try {
+      await client.connect();
       const database = client.db('page');
       const pageUsers = database.collection(pageColl);
       const query = { Username: value };
       const pageUserName = await pageUsers.findOne(query);
       //    console.log(pageUserName._id);
+
+      if(pageUserName == null){
+        return null;
+      }else{
+        return pageUserName.Password
+      }
 
     } finally {     
       await client.close();
@@ -115,4 +148,3 @@ async function getEntry(pageColl, title, value){
 
 
   
-

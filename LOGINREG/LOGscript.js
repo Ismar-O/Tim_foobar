@@ -22,7 +22,7 @@ document.getElementById('myForm').addEventListener('submit', function(event) {
             "Content-type": "application/json; charset=UTF-8" 
         },
         
-        body: JSON.stringify({ name: name, email: email, pw: pw }) // Konvertuje podatke u JSON
+        body: JSON.stringify({ name: name,  pw: pw }) // Konvertuje podatke u JSON
         
     })
     .then(response => response.text()) // Očekuje odgovor u tekstualnom formatu
