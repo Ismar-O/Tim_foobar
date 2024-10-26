@@ -2,6 +2,8 @@ const express = require('express');         //Za serviranje cijelih stranica
 const path = require('path'); 
 const bodyParser = require('body-parser');  //Za parsiranje 
 const app = express();
+var cookieParser = require('cookie-parser');
+app.use(cookieParser());
 const port = 8000;
 
 const { MongoClient } = require("mongodb");
@@ -43,6 +45,11 @@ app.get("/home",(req,res)=>{
     res.sendFile(path.join(__dirname,'login-form-v1/Login_v1/default.html'))
 })
 
+app.get("/wrongpass",(req,res)=>{
+  res.sendFile(path.join(__dirname,'login-form-v1/Login_v1/wrongpass.html'))
+})
+
+
 app.use(express.json());
 app.post('/submitREG', (req, res) => {
     let ime = req.body.Username; // Access the 'name' field
@@ -80,7 +87,7 @@ app.post('/submitLOG', (req, res) => {
 
         res.redirect('/home');
       }else{
-        res.send("Neispravan pass");
+        res.redirect('/wrongpass');
       }
     
       console.log("Ovo je podatak " + result);
@@ -88,6 +95,10 @@ app.post('/submitLOG', (req, res) => {
       console.error(error);
   });
 
+
+
+    res.cookie("userData", ime); 
+  
  
 
 });
@@ -100,8 +111,6 @@ app.post('/submitWP', (req, res) => {
 
 
 });
-
-
 
 
 
@@ -144,6 +153,19 @@ async function getEntry(pageColl, value){
 
 }
 
+
+/*~~~~~~~~~~~~~~~~~~~~ Cookies ~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+
+
+
+
+
+  app.get('/home', (req, res)=>{ 
+    //shows all the cookies 
+    //res.send(req.cookies); 
+    res.send("home page")
+    });
 
 
 
