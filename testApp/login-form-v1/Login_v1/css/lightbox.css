@@ -1,3 +1,48 @@
+
+.customBG{
+  background: -webkit-linear-gradient(-135deg, #2E3192 , #1BFFFF);
+  background: -o-linear-gradient(-135deg, #2E3192 , #1BFFFF);
+  background: -moz-linear-gradient(-135deg, #2E3192 , #1BFFFF);
+  background: linear-gradient(-135deg,#2E3192 , #1BFFFF);
+}
+
+
+
+
+
+.login100-form-btn {
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 0.4em;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #fff;
+  text-transform: uppercase;
+
+  width: 100%;
+  height: 50px;
+  border-radius: 25px;
+  background: #8e91e7 ;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 25px;
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.login100-form-btn:hover {
+  background: #333333;
+}
+
+
+
 body.lb-disable-scrolling {
     overflow: hidden;
   }
@@ -29,6 +74,14 @@ body.lb-disable-scrolling {
   }
   body.right-comment-none .lightbox {width: 100% !important;}
   body.right-comment-none .right-comment {display: none;}
+
+
+  body{
+    background: -webkit-linear-gradient(-135deg, #2E3192 , #1BFFFF);
+    background: -o-linear-gradient(-135deg, #2E3192 , #1BFFFF);
+    background: -moz-linear-gradient(-135deg, #2E3192 , #1BFFFF);
+    background: linear-gradient(-135deg,#2E3192 , #1BFFFF);
+  }
   
   .lightbox .lb-image {
     display: block;
@@ -47,7 +100,7 @@ body.lb-disable-scrolling {
   
   .lb-outerContainer {
     position: relative;
-    *zoom: 1;
+   /* *zoom: 1;*/
     width: 250px;
     height: 250px;
     margin: 0 auto;

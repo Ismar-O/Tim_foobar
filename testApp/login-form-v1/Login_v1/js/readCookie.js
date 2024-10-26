@@ -22,7 +22,5 @@ const username = getCookie('user');
 // Display the username in the HTML
 if (username) {
     document.getElementById('user-name').textContent = username;
-} else {
-    document.getElementById('user-name').textContent = 'Guest';
 }
 

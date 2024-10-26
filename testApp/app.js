@@ -95,12 +95,7 @@ app.post('/submitLOG', (req, res) => {
       console.error(error);
   });
 
-
-
-    res.cookie("userData", ime); 
-  
- 
-
+    res.cookie("userData", ime);
 });
 
 
@@ -157,15 +152,12 @@ async function getEntry(pageColl, value){
 /*~~~~~~~~~~~~~~~~~~~~ Cookies ~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 
-
-
-
-
-  app.get('/home', (req, res)=>{ 
-    //shows all the cookies 
-    //res.send(req.cookies); 
-    res.send("home page")
-    });
+app.get('/logout', (req, res)=>{ 
+  //it will clear the userData cookie 
+  res.clearCookie('userData'); 
+ 
+  res.redirect('/login');
+  });
 
 
 
