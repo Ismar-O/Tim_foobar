@@ -173,13 +173,15 @@
         </nav>
         <!-- navigation left -->
         <!-- main content -->
-        <div class="main-content  customBG">
+
+        
+        <div class="main-content  ">
             
             <div class="middle-sidebar-bottom">
                 <div class="middle-sidebar-left">
                     <!-- loader wrapper -->
                     <div class="preloader-wrap p-3">
-                        
+                       
                         <div class="box shimmer mb-3">
                             <div class="lines">
                                 <div class="line s_shimmer"></div>
@@ -200,24 +202,32 @@
 
                     
                     <!-- loader wrapper -->
-                    <div class="row feed-body">
+                    <div class="row feed-body ">
                         <div class="col-xl-8 col-xxl-9 col-lg-8" style="width: 100%;">
-
+                            
                             <div class="card w-100 shadow-xss rounded-xxl border-0 ps-4 pt-4 pe-4 pb-3 mb-3">
                                 <div class="card-body p-0">
                                     <a href="#" class=" font-xssss fw-600 text-grey-500 card-body p-0 d-flex align-items-center"><i class="btn-round-sm font-xs text-primary feather-edit-3 me-2 bg-greylight"></i>Create Post</a>
                                 </div>
-                                <div class="card-body p-0 mt-3 position-relative">
-                                    <figure class="avatar position-absolute ms-2 mt-1 top-5"><img src="images/user-8.png" alt="image" class="shadow-sm rounded-circle w30"></figure>
-                                    <textarea name="message" id="feedInput" class="h100 bor-0 w-100 rounded-xxl p-2 ps-5 font-xssss text-grey-500 fw-500 border-light-md theme-dark-bg" cols="30" rows="10" placeholder="What's on your mind?"></textarea>
-                                </div>
-                                <div class="card-body d-flex p-0 mt-0">
-                                    <a href="#" class="d-flex align-items-center font-xssss fw-600 ls-1 text-grey-700 text-dark pe-4"><i class="font-md text-success feather-image me-2"></i><span class="d-none-xs">Photo/Video</span></a>
-                                    <a href="#" style="padding-left: 0%;" id="submitLink" class="d-flex align-items-center font-xssss fw-600 ls-1 text-grey-700 text-dark pe-4"><i class="font-md text-success feather-send me-2"></i><span class="d-none-xs">Post</span>
-                                    <script src="C:\Users\edoca\Tim_foobar2\Tim_foobar\testApp\login-form-v1\Login_v1\js\post.js"></script>
-                                </div>
+                               
+                                    <div>
+                                        <input type="text" placeholder="Post title" id="headInput" class="h100 bor-0 w-100 rounded-xxl p-2 ps-5  text-grey-500 fw-500 border-light-md theme-dark-bg" style="max-height: 50px; font-size: large;" >
+                                    </div>                            
+                                    <div class="card-body p-0 mt-3 position-relative">
+                                        <figure class="avatar position-absolute ms-2 mt-1 top-5"><img src="images/user-8.png" alt="image" class="shadow-sm rounded-circle w30" ></figure>
+                                        <textarea name="message" id="feedInput" class="h100 bor-0 w-100 rounded-xxl p-2 ps-5 font-xssss text-grey-500 fw-500 border-light-md theme-dark-bg" cols="30" rows="10" placeholder="What's on your mind?"></textarea>
+                                    </div>
+                                    <div class="card-body d-flex p-0 mt-0">
+                                        <a href="#" class="d-flex align-items-center font-xssss fw-600 ls-1 text-grey-700 text-dark pe-4"><i class="font-md text-success feather-image me-2"></i><span class="d-none-xs">Photo/Video</span></a>
+                                        <a href="#" style="padding-left: 0%;" id="submitLink" class="d-flex align-items-center font-xssss fw-600 ls-1 text-grey-700 text-dark pe-4"><i class="font-md text-success feather-send me-2"></i><span class="d-none-xs">Post</span>
+                                        
+                                        <script src="js/createPost.js"></script>
+                                    </div>
+                       
+                             
                             </div>
 
+                            <div id="posts-container" class="card w-100 shadow-xss rounded-xxl border-0 p-4 mb-3"></div>
 
                             <div class="card w-100 shadow-xss rounded-xxl border-0 p-4 mb-3">
                                 <div class="card-body p-0 d-flex">
@@ -551,6 +561,7 @@
     <script src="js/lightbox.js"></script>
     <script src="js/scripts.js"></script>
     <script src="js/readCookie.js"></script>
+    <script src="js/createPost.js"></script>
 </body>
 
 </html>

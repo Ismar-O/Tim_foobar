@@ -1,10 +1,8 @@
-
-
 function getCookie(name) {
-    const value = document.cookie;  // Remove the extra semicolon here
+    const value = document.cookie;  
     console.log("Cookie string:", value);
     
-    const parts = value.split(`; ${name}=`); // Split by `; name=` pattern
+    const parts = value.split(`; ${name}=`); 
     console.log("Parts after split:", parts);
 
     if (parts.length) {

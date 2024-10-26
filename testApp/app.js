@@ -78,6 +78,7 @@ app.post('/submitLOG', (req, res) => {
     const ime = req.body.Username; // Access the 'name' field
     const pw = req.body.Pass; // Access the 'pw' field
       // Log the received data to the console
+      console.log(req);
     console.log('Received data:', {ime, pw});
       // Send a response back to the client
     getEntry('users', ime).then(result => {
@@ -149,15 +150,57 @@ async function getEntry(pageColl, value){
 }
 
 
+
+
+// Assuming Express and body-parser are already set up
+app.post('/newpost', (req, res) => {
+  const Text = req.body.myText;  // Access 'myText' from the JSON payload
+  const Head = req.body.myHead;
+  const User = req.body.myUser
+
+  console.log("Post received");
+  console.log("Text:", Text);
+
+
+  const myobj = {Head: Head, Text: Text, User: User };
+  pageWrite("post", myobj);  // Process and save the data as needed
+
+  // Send a response back to the client to confirm success
+  res.json({ message: "Post successful", data: myobj });
+});
+
 /*~~~~~~~~~~~~~~~~~~~~ Cookies ~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 
 app.get('/logout', (req, res)=>{ 
   //it will clear the userData cookie 
   res.clearCookie('userData'); 
- 
   res.redirect('/login');
   });
+
+
+  /************ Generisanje postova ************************/
+
+
+app.get('/getPosts', async (req, res) => {
+  try {
+      await client.connect();
+      const database = client.db('page');
+      const collection = database.collection('post');
+
+      // Retrieve all posts
+      const posts = await collection.find({}).toArray();
+      
+      // Send posts as JSON
+      res.json(posts);
+  } catch (error) {
+      console.error("Error fetching posts:", error);
+      res.status(500).send("An error occurred while fetching posts.");
+  } finally {
+      await client.close();
+  }
+});
+
 
 
 
