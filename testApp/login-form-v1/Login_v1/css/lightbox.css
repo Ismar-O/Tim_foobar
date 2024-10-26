@@ -7,11 +7,35 @@
 }
 
 
-.card div{
-  background-color: red;
-
+.customCard{
+  background-color: white;
 }
 
+.customCard h2{
+  font-size: 3em;
+}
+.customCard h2+p{
+  font-size: 1.5em;
+}
+
+.customCard p~p{
+  background-color: rgb(254, 254, 254);
+  margin: 0px;
+  padding: 20px;
+  border: 1px solid lightgray;
+  border-radius: 25px;
+}
+
+.customCard:hover{
+  scale: 1.03;
+  transition: ease-in-out scale 0.2s;
+}
+
+
+#myFeed-body{
+  display: grid;
+  grid-template-columns: 1fr;
+}
 
 
 .login100-form-btn {
