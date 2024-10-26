@@ -56,15 +56,18 @@ const myUser = getCookie('user');
 fetch('http://localhost:8000/getPosts')
             .then(response => response.json())
             .then(posts => {
-                const container = document.getElementById('posts-container');
+                const container = document.getElementById('posts-main');
                 posts.reverse().forEach(post => {
                     const postDiv = document.createElement('div');
                     postDiv.className = 'postMain';
 
                     postDiv.innerHTML = `
+                    <div class="customCard card w-100 shadow-xss rounded-xxl border-0 p-4 mb-3">
                         <h2>${post.Head}</h2>
                         <p><strong>User:</strong> ${post.User}</p>
                         <p>${post.Text}</p>
+
+                    </div>
                     `;
 
                      container.appendChild(postDiv);
